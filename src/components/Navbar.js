@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Nav = styled.nav`
-  background-color: #007bff;
+  background-color: #f5f5f5;
   padding: 25px 70px;
   display: flex;
   justify-content: space-between;
@@ -17,7 +17,7 @@ const NavLinks = styled.div`
 `;
 
 const NavLink = styled(Link)`
-  color: #fff;
+  color: black;
   text-decoration: none;
   font-size: 18px;
   margin-left: 20px;
@@ -28,7 +28,7 @@ const NavLink = styled(Link)`
 `;
 
 const Logo = styled.h2`
-  color: #fff;
+  color: black;
   margin: 0;
 `;
 

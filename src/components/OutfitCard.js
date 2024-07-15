@@ -10,11 +10,26 @@ const Card = styled.div`
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
+  margin-bottom: 20px;
 `;
 
 const Image = styled.img`
   width: 100%;
   height: auto;
+`;
+
+const Details = styled.div`
+  padding: 10px;
+`;
+
+const Title = styled.h2`
+  font-size: 1.5rem;
+  margin: 10px 0;
+`;
+
+const Description = styled.p`
+  font-size: 1rem;
+  color: #555;
 `;
 
 const Actions = styled.div`
@@ -97,7 +112,11 @@ const OutfitCard = ({ outfit, onDelete, onLike, onComment }) => {
 
   return (
     <Card>
-      <Image src={outfit.imageUrl} alt={outfit.description} />
+      <Image src={outfit.image} alt={outfit.description} />
+      <Details>
+        <Title>{outfit.name}</Title>
+        <Description>{outfit.description}</Description>
+      </Details>
       <Actions>
         <LikeButton onClick={onLike} isLiked={outfit.isLiked}>
           <Icon>{outfit.isLiked ? <FaThumbsDown /> : <FaThumbsUp />}</Icon>

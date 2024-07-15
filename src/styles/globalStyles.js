@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Didot', serif;
     font-size: 14px;
     padding: 10px 15px;
     border: none;

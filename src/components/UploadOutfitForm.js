@@ -27,12 +27,13 @@ const Input = styled.input`
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  margin-bottom: 10px;
 `;
 
 const Button = styled.button`
   align-self: flex-end;
-  background-color: #007bff;
-  color: #fff;
+  background-color: black;
+  color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -40,7 +41,7 @@ const Button = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: grey;
   }
 `;
 
@@ -56,6 +57,16 @@ const UploadOutfitForm = ({ addOutfit }) => {
     setOutfit({ ...outfit, [name]: value });
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Handle file upload here, such as uploading to a server or displaying preview
+      // For simplicity, assuming you upload the file and get back a URL
+      const imageUrl = URL.createObjectURL(file);
+      setOutfit({ ...outfit, image: imageUrl });
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addOutfit(outfit);
@@ -65,9 +76,10 @@ const UploadOutfitForm = ({ addOutfit }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <FormGroup>
-        <Label htmlFor="name">Outfit Name</Label>
+        <Label htmlFor="name">Outfit / Outfit Board Name</Label>
         <Input
           type="text"
+          id="name"
           name="name"
           value={outfit.name}
           onChange={handleChange}
@@ -79,6 +91,7 @@ const UploadOutfitForm = ({ addOutfit }) => {
         <Label htmlFor="description">Description</Label>
         <Input
           type="text"
+          id="description"
           name="description"
           value={outfit.description}
           onChange={handleChange}
@@ -87,14 +100,25 @@ const UploadOutfitForm = ({ addOutfit }) => {
         />
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="image">Image URL</Label>
+        <Label htmlFor="imageUrl">Image URL</Label>
         <Input
           type="text"
+          id="imageUrl"
           name="image"
           value={outfit.image}
           onChange={handleChange}
           placeholder="Image URL"
           required
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor="imageFile">Upload Image File</Label>
+        <Input
+          type="file"
+          id="imageFile"
+          name="imageFile"
+          accept=".jpg, .jpeg, .png"
+          onChange={handleFileChange}
         />
       </FormGroup>
       <Button type="submit">Add Outfit</Button>

@@ -51,7 +51,7 @@ const HomePage = () => {
 
   return (
     <Container>
-      <Title>Welcome to My Social App</Title>
+      <Title>Welcome to My Shopping App</Title>
       <ImageGrid>
         {images.map((image, index) => (
           <ImageCard key={index} imageUrl={image.imageUrl} description={image.description} />
